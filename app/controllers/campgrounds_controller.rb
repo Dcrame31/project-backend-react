@@ -18,7 +18,7 @@ class CampgroundsController < ApplicationController
     @campground = Campground.new(campground_params)
 
     if @campground.save
-      render json: @campground, status: :created, location: @campground
+      render json: @campground, except: [:created_at, :updated_at]
     else
       render json: @campground.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class CampgroundsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def campground_params
-      params.fetch(:campground, {})
+      params.require(:campground).permit(:name, :location_id, :description, :link, :cost)
     end
 end
