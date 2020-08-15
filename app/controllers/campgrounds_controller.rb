@@ -14,7 +14,7 @@ class CampgroundsController < ApplicationController
   end
 
   # POST /campgrounds
-  def create
+  def creategit 
     @campground = Campground.new(campground_params)
 
     if @campground.save
