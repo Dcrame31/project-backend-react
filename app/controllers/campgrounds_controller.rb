@@ -14,7 +14,7 @@ class CampgroundsController < ApplicationController
   end
 
   # POST /campgrounds
-  def creategit 
+  def create
     @campground = Campground.new(campground_params)
 
     if @campground.save
@@ -46,6 +46,6 @@ class CampgroundsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def campground_params
-      params.require(:campground).permit(:name, :location_id, :description, :link, :cost)
+      params.require(:campground).permit(:name, :description, :location_id, :cost, :link )
     end
 end
